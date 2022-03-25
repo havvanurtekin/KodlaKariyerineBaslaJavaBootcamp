@@ -4,7 +4,7 @@
 package Hafta2.Cumartesi.Odev;
 
 /**
- * @author SAYIN BACI
+ * @author  Havva Nur TEKÝN
  *
  */
 public class Sorular {

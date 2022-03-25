@@ -2,25 +2,25 @@
  * 
  */
 package Hafta2.Cumartesi.Odev;
-import java.util.HashMap;
 import java.util.Random;
 
 /**
- * @author SAYIN BACI
+ * @author  Havva Nur TEK�N
  *
  * 10 kişilik bir sınıf var.
  * Sınıftaki kişilerin numaraları ve cinsiyetlerini biliyorum.
  * bu sınıftaki kızların ve erkeklerin numalarını ayrı ayrı ekrana yazdıran program.
  *
  */
-public class Cevap3 {
+public class Students {
 
 	/**
 	 * @param args
 	 */
-	public class Students{
+		//parameters
 		private String gender;
 		private int number;
+		//constructor methods
 		public Students() {
 			
 		}
@@ -28,6 +28,7 @@ public class Cevap3 {
 			this.gender = gender;
 			this.number = number;
 		}
+		//getters-setters
 		public String getGender() {
 			return gender;
 		}
@@ -41,32 +42,36 @@ public class Cevap3 {
 			this.number = number;
 		}
 		
-	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Cevap3.Students student[] =new Cevap3.Students[10] ;
-		
-		int n = 10;
-		String gender = "fm";
-		Random r = new Random();  
+		//paramesters
+		Students student[] =new Students[10] ;//student array
+		int n = 10;//element number
+		String gender = "fm";//gender selector
+		Random r = new Random(); //random object
+		//
         for (int i = 0; i < n; i++) {
   
-            // generate a random number between
-            // 0 to AlphaNumericString variable length
+            // generate a random number between 0-2
             int index = r.nextInt(2);
+            // generate another random num 0-300 for school num 
             int number = r.nextInt(300);
-            // add Character one by one in end of sb
+            // gender selection with f(female) or m(male)
             String g = String.valueOf(gender.charAt(index));
-            student[i] = new Cevap3().new Students(g,number);
+            //assign the gender to the relevant element
+            student[i] = new Students(g,number);
            
            
         }
+        //if gender is female their school nums are printed
         System.out.println("K�zlar:");
         for (int i = 0; i<n; i++) {
         	if(student[i].getGender().equals("f")) {
         		System.out.println("Gender: " + student[i].getGender() + " Number: " + student[i].getNumber());
         	}	  
         }
+        //if gender is male their school nums are printed
         System.out.println("Erkekler:");
         for (int i = 0; i<n; i++) {
         	if(student[i].getGender().equals("m")) {
