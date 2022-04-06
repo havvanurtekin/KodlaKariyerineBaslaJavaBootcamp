@@ -11,34 +11,18 @@ import Hafta3.Odev.AirlineCompany.Plane;
  */
 public class TicketService {
 
-//  Plane plane;
-//
-//  public TicketService(Plane plane){
-//      this.plane = plane;
-//  }
 
-
-//  public void takeTicketForPassenger(int countPerson){
-//      int takeTicketFare = plane.takeTicket(countPerson);
-//      System.out.println("total fare: " + takeTicketFare);
-//
-//  }
-
-
+	//bilet alýmý
   public void takeTicketForPassenger(Plane plane, int countPerson){
-      int takeTicketFare = plane.takeTicket(countPerson);
-      System.out.println("total fare: " + takeTicketFare);
+      double ticketFare = plane.takeTicket(countPerson);
+      
+      System.out.println("Toplam bilet ücreti: "+ticketFare);
 
   }
 
-  public void takeTicketForPassenger(Plane plane, int countPerson, boolean isBusiness){
-      int takeTicketFare = plane.takeTicket(countPerson);
-      System.out.println("total fare: " + takeTicketFare);
-
-  }
-  
-  public void cancelTicketForPassenger(Plane plane, int seatNo) {
-	  plane.removePassenger(seatNo);
+  //bilet iptali
+  public void cancelTicketForPassenger(Plane plane, int id) {
+	  plane.removePassenger(id);
   }
 
 }
