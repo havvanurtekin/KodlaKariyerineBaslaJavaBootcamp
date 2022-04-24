@@ -10,10 +10,12 @@ import java.util.Iterator;
 @Entity
 public class THY extends Plane implements IAbroadFoodChoise {
     double ticketFare = 170;
-    boolean isCurrentPassengerBusiness;
+
+
     @Override
     public int remainderCapacity(int personCount) {
         int remainder  = super.getCapacity() - super.getPassengerCount();
+
         if(!this.isItFull()) {
             if(personCount <= remainder) {
 
@@ -70,7 +72,7 @@ public class THY extends Plane implements IAbroadFoodChoise {
         while(iterator.hasNext()){
             System.out.println("s");
             Passenger p = iterator.next();
-            LocalDate past = p.getDate();
+            LocalDate past = p.getTicketPurchaseDate();
             System.out.println("ss");
             if(p.getPassengerId() == passengerId) {
 
@@ -90,7 +92,7 @@ public class THY extends Plane implements IAbroadFoodChoise {
     @Override
     public void foodChoise(Passenger passenger) {
 
-        if(isCurrentPassengerBusiness) {
+        if(passenger.isBusiness()) {
             System.out.println("THY business yolcular�na yemek ikram�nda bulunur.");
         }else {
             System.out.println("THY economy yolcular�na i�ecek ikram�nda bulunur.");

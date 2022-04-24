@@ -5,15 +5,20 @@ import com.example.javabootcampweek4.IAbroadFoodChoise;
 import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Entity
 public class OnurAir extends Plane implements IAbroadFoodChoise {
 
-    boolean isCurrentPassengerBusiness;
+    double ticketFare = 150;
+    List<Passenger> passengers = new ArrayList<Passenger>();
+
     @Override
     public int remainderCapacity(int personCount) {
         int remainder  = super.getCapacity() - super.getPassengerCount();
+
         if(!this.isItFull()) {
             if(personCount <= remainder) {
 
@@ -38,13 +43,25 @@ public class OnurAir extends Plane implements IAbroadFoodChoise {
         }
     }
 
+    //bilet alma
     @Override
     public double takeTicket(int personCount) {
-        int result = this.remainderCapacity(personCount);
-        if(result >= 0)
-            return personCount * super.getFare();
-        else
-            return 0;
+        // TODO Auto-generated method stub
+        double totalTicketFare = 0;
+        double fare = super.getFare()*personCount;
+        if(fare != 0) {
+            for(int i = 0; i < personCount; i++) {
+
+                Passenger passenger = super.getPassenger();
+                ticketFare = ticketFare(ticketFare, passenger);
+                totalTicketFare += ticketFare;
+                System.out.println("Passenger id: "+passenger.getPassengerId());
+                passengers.add(passenger);
+                passengerCount += 1;
+            }
+        }
+
+        return totalTicketFare;
     }
 
     @Override
@@ -70,7 +87,7 @@ public class OnurAir extends Plane implements IAbroadFoodChoise {
         while(iterator.hasNext()){
             System.out.println("s");
             Passenger p = iterator.next();
-            LocalDate past = p.getDate();
+            LocalDate past = p.getTicketPurchaseDate();
             System.out.println("ss");
             if(p.getPassengerId() == passengerId) {
 
@@ -85,15 +102,33 @@ public class OnurAir extends Plane implements IAbroadFoodChoise {
                 }
             }
         }
+
     }
 
+
+    //yemek se�ene�i
     @Override
     public void foodChoise(Passenger passenger) {
+        // TODO Auto-generated method stub
+        if(passenger.getGender().equals("K"))
+            System.out.println("�ikolata hediyesi");
+        else
+            System.out.println("yemek se�en�i yok");
 
-        if(isCurrentPassengerBusiness) {
-            System.out.println("THY business yolcular�na yemek ikram�nda bulunur.");
-        }else {
-            System.out.println("THY economy yolcular�na i�ecek ikram�nda bulunur.");
-        }
     }
+
+    //ki�isel bilet �creti
+    public double ticketFare(double fare, Passenger passenger) {
+
+        if(passenger.getSuitcaseWeight()>25) {
+            fare += fare * (50 / 100);
+        }else if(passenger.isBusiness()) {
+            fare += 200;
+        }
+        return fare;
+    }
+
+
 }
+
+

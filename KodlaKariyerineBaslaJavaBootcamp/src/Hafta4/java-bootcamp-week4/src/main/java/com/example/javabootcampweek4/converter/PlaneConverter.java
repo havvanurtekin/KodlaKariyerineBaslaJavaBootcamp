@@ -17,7 +17,6 @@ public class PlaneConverter {
         double fareRequestDTO = planeSaveRequestDTO.getFare();
         LocalDate flightDateRequestDTO = planeSaveRequestDTO.getFlightDate();
         int businessCapacityRequestDTO = planeSaveRequestDTO.getBusinessCapacity();
-        List<Passenger> passengersRequestDTO = planeSaveRequestDTO.getPassengers();
         LocalDate ticketPurchaseDateRequestDTO = planeSaveRequestDTO.getTicketPurchaseDate();
 
         THY thyPlane = new THY();
@@ -27,7 +26,6 @@ public class PlaneConverter {
         thyPlane.setFlightDate(flightDateRequestDTO);
         thyPlane.setTicketPurchaseDate(ticketPurchaseDateRequestDTO);
         thyPlane.setBusinessCapacity(businessCapacityRequestDTO);
-        thyPlane.setPassengers(passengersRequestDTO);
         return thyPlane;
     }
 
@@ -36,7 +34,6 @@ public class PlaneConverter {
         double fareRequestDTO = planeSaveRequestDTO.getFare();
         LocalDate flightDateRequestDTO = planeSaveRequestDTO.getFlightDate();
         int businessCapacityRequestDTO = planeSaveRequestDTO.getBusinessCapacity();
-        List<Passenger> passengersRequestDTO = planeSaveRequestDTO.getPassengers();
         LocalDate ticketPurchaseDateRequestDTO = planeSaveRequestDTO.getTicketPurchaseDate();
         Pegasus pegasusPlane = new Pegasus();
 
@@ -44,7 +41,6 @@ public class PlaneConverter {
         pegasusPlane.setFare(fareRequestDTO);
         pegasusPlane.setFlightDate(flightDateRequestDTO);
         pegasusPlane.setTicketPurchaseDate(ticketPurchaseDateRequestDTO);
-        pegasusPlane.setPassengers(passengersRequestDTO);
         pegasusPlane.setBusinessCapacity(businessCapacityRequestDTO);
         return pegasusPlane;
     }
@@ -53,7 +49,6 @@ public class PlaneConverter {
         double fareRequestDTO = planeSaveRequestDTO.getFare();
         LocalDate flightDateRequestDTO = planeSaveRequestDTO.getFlightDate();
         int businessCapacityRequestDTO = planeSaveRequestDTO.getBusinessCapacity();
-        List<Passenger> passengersRequestDTO = planeSaveRequestDTO.getPassengers();
         LocalDate ticketPurchaseDateRequestDTO = planeSaveRequestDTO.getTicketPurchaseDate();
 
         OnurAir onurAirPlane = new OnurAir();
@@ -62,7 +57,6 @@ public class PlaneConverter {
         onurAirPlane.setFare(fareRequestDTO);
         onurAirPlane.setFlightDate(flightDateRequestDTO);
         onurAirPlane.setTicketPurchaseDate(ticketPurchaseDateRequestDTO);
-        onurAirPlane.setPassengers(passengersRequestDTO);
         onurAirPlane.setBusinessCapacity(businessCapacityRequestDTO);
         return onurAirPlane;
     }

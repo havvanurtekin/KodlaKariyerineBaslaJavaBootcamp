@@ -6,5 +6,9 @@ import lombok.Data;
 public class PassengerResponseDTO {
     int age;
 
-    int gender;
+    String gender;
+
+    long passengerId;
+
+    boolean isBusiness;
 }

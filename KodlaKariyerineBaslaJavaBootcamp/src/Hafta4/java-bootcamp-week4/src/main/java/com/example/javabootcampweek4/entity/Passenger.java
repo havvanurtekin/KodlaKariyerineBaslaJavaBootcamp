@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Passenger {
     @Id
     @Column(name = "passenger_ıd", nullable = false)
-    private Long passengerId;
+    private Integer passengerId;
 
     @Column(name = "age")
     int age;
@@ -28,9 +28,12 @@ public class Passenger {
     @Column(name = "seat_no")
     int seatNo;
 
-    @Column(name = "date")
-    LocalDate date;
+    @Column(name = "flight_date")
+    LocalDate flightDate;
 
-    @Column(name = "isBusiness")
+    @Column(name = "ticket_purchase_date")
+    LocalDate ticketPurchaseDate;
+
+    @Column(name = "is_business")
     boolean isBusiness;
 }

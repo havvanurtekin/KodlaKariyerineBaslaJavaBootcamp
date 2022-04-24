@@ -21,6 +21,6 @@ public class PlaneSaveRequestDTO {
 
     private int businessCapacity;
 
-    private List<Passenger> passengers = new ArrayList<Passenger>();
+
 
 }

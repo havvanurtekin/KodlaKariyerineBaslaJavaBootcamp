@@ -5,16 +5,22 @@ import com.example.javabootcampweek4.IAbroadFoodChoise;
 import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 @Entity
 public class Pegasus extends Plane implements IAbroadFoodChoise {
 
-    boolean isCurrentPassengerBusiness;
+    double ticketFare = 200;
+    //yolcu listesi
+    List<Passenger> passengersP = new ArrayList<Passenger>();
+
     @Override
     public int remainderCapacity(int personCount) {
         int remainder  = super.getCapacity() - super.getPassengerCount();
+
         if(!this.isItFull()) {
             if(personCount <= remainder) {
 
@@ -39,13 +45,24 @@ public class Pegasus extends Plane implements IAbroadFoodChoise {
         }
     }
 
+    //bilet alma metodu
     @Override
     public double takeTicket(int personCount) {
-        int result = this.remainderCapacity(personCount);
-        if(result >= 0)
-            return personCount * super.getFare();
-        else
-            return 0;
+        double totalTicketFare = 0;
+        double fare = personCount * super.getFare();
+        if(fare != 0) {
+            for(int i = 0; i < personCount; i++) {
+
+                Passenger passenger = super.getPassenger();
+                ticketFare = ticketFare(ticketFare, passenger);
+                totalTicketFare += ticketFare;
+                System.out.println("Passenger id: "+passenger.getPassengerId());
+                passengersP.add(passenger);
+                passengerCount += 1;
+            }
+        }
+
+        return totalTicketFare;
     }
 
     @Override
@@ -71,7 +88,7 @@ public class Pegasus extends Plane implements IAbroadFoodChoise {
         while(iterator.hasNext()){
             System.out.println("s");
             Passenger p = iterator.next();
-            LocalDate past = p.getDate();
+            LocalDate past = p.getTicketPurchaseDate();
             System.out.println("ss");
             if(p.getPassengerId() == passengerId) {
 
@@ -88,13 +105,20 @@ public class Pegasus extends Plane implements IAbroadFoodChoise {
         }
     }
 
+
+    //ki�isel bilet �creti belirleme
+    public double ticketFare(double fare, Passenger passenger) {
+
+        if(passenger.getAge()<13) {
+            fare = fare * (90 / 100);
+        }else if(passenger.isBusiness()) {
+            fare += 130;
+        }
+        return fare;
+    }
+    //yemek se�ene�i
     @Override
     public void foodChoise(Passenger passenger) {
-
-        if(isCurrentPassengerBusiness) {
-            System.out.println("Pegasus business yolcular�na yemek ikram�nda bulunur.");
-        }else {
-            System.out.println("Pegasus economy yolcular�na i�ecek ikram�nda bulunur.");
-        }
+        System.out.println("Pegasus et �r�nleri ikram�nda bulunur.");
     }
 }

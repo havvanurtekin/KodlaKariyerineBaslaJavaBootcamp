@@ -18,18 +18,18 @@ public class PlaneController {
     PlaneService planeService;
 
     @PostMapping("/saveTHYPlane")
-    public ResponseEntity<Long> saveTHYPlane(@RequestBody PlaneSaveRequestDTO planeSaveRequestDTO) throws Exception {
-        Long planeId = planeService.saveTHY(planeSaveRequestDTO);
+    public ResponseEntity<Integer> saveTHYPlane(@RequestBody PlaneSaveRequestDTO planeSaveRequestDTO) throws Exception {
+        Integer planeId = planeService.saveTHY(planeSaveRequestDTO);
         return new ResponseEntity<>(planeId, HttpStatus.OK );
     }
     @PostMapping("/savePegasusPlane")
-    public ResponseEntity<Long> savePegasusPlane(@RequestBody PlaneSaveRequestDTO planeSaveRequestDTO){
-        Long planeId = planeService.savePegasus(planeSaveRequestDTO);
+    public ResponseEntity<Integer> savePegasusPlane(@RequestBody PlaneSaveRequestDTO planeSaveRequestDTO){
+        Integer planeId = planeService.savePegasus(planeSaveRequestDTO);
         return new ResponseEntity<>(planeId, HttpStatus.OK );
     }
     @PostMapping("/saveOnurAirPlane")
-    public ResponseEntity<Long> saveOnurAirPlane(@RequestBody PlaneSaveRequestDTO planeSaveRequestDTO){
-        Long planeId = planeService.saveOnurAir(planeSaveRequestDTO);
+    public ResponseEntity<Integer> saveOnurAirPlane(@RequestBody PlaneSaveRequestDTO planeSaveRequestDTO){
+        Integer planeId = planeService.saveOnurAir(planeSaveRequestDTO);
         return new ResponseEntity<>(planeId, HttpStatus.OK );
     }
 }

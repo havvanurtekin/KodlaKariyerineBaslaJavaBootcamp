@@ -1,10 +1,10 @@
 package com.example.javabootcampweek4.entity;
 
+import com.example.javabootcampweek4.service.PassengerService;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,7 +14,7 @@ public abstract class Plane {
     @Id
     @Column(name = "plane_ıd", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long planeId;
+    private Integer planeId;
 
     @Column(name = "passenger_count")
     int passengerCount;
@@ -34,9 +34,11 @@ public abstract class Plane {
     @Column(name = "ticket_purchase_date")
     LocalDate ticketPurchaseDate;
 
-    @ManyToMany
-    @JoinColumn
-    List<Passenger> passengers = new ArrayList<Passenger>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "passenger_id")
+    Passenger passenger;
+
+    List<Passenger> passengers;
 
     public abstract int remainderCapacity(int personCount);
 
