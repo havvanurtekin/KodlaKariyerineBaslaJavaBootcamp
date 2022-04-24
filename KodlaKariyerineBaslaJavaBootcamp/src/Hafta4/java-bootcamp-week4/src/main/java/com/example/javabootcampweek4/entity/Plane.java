@@ -1,16 +1,17 @@
 package com.example.javabootcampweek4.entity;
 
-import com.example.javabootcampweek4.service.PassengerService;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+//plane table - entity
 @Data
 @Entity
 @Table
 public abstract class Plane {
+    //fetaures - columns
     @Id
     @Column(name = "plane_ıd", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +41,7 @@ public abstract class Plane {
 
     List<Passenger> passengers;
 
+    //abstract methods
     public abstract int remainderCapacity(int personCount);
 
     public abstract boolean isItFull();
@@ -48,7 +50,7 @@ public abstract class Plane {
 
     public abstract int lastDayCalculation(LocalDate ticketPurchaseDate);
 
-    public abstract void removePassenger(int passengerId);
+
 
 
 

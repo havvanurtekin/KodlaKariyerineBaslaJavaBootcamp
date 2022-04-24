@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+//passenger repository - connect entity to service by passenger id
 @Repository
 public interface PassengerRepository extends CrudRepository<Passenger, Integer> {
+    //plane'e göre yolcuların tamamını bulur
     List<Passenger> findAllByPlane(Plane plane);
 }

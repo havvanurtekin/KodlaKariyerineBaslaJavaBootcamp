@@ -2,9 +2,10 @@ package com.example.javabootcampweek4.requestDTO;
 
 import lombok.Data;
 
-import javax.persistence.Column;
+
 import java.time.LocalDate;
 
+//passenger kayıt sorgusu için oluşturulan ön dto
 @Data
 public class PassengerSaveRequestDTO {
 

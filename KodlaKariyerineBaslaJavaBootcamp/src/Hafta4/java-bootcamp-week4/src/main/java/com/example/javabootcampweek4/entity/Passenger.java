@@ -8,10 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
+//passenger tablosu entity classı
 @Data
 @Entity
 @Table
 public class Passenger {
+    //features - columns
     @Id
     @Column(name = "passenger_ıd", nullable = false)
     private Integer passengerId;
